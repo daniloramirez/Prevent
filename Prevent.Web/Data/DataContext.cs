@@ -9,5 +9,6 @@ namespace Prevent.Web.Data
         {
         }
         public DbSet<PreventEntity> Prevents { get; set; }
+        public DbSet<PreventTypeEntity> PreventTypes { get; set; }
     }
 }

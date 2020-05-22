@@ -13,7 +13,7 @@ namespace Prevent.Web.Data.Entities
         public string Description { get; set; }
 
         [Required(ErrorMessage = "The field {0} is mandatory.")]
-        public TypePreventEntity TypePrevent { get; set; }
+        public PreventTypeEntity PreventType { get; set; }
 
         public string File { get; set; }
 

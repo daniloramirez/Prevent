@@ -9,7 +9,7 @@ namespace Prevent.Web.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "TypePreventEntity",
+                name: "PreventTypes",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -18,7 +18,7 @@ namespace Prevent.Web.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TypePreventEntity", x => x.Id);
+                    table.PrimaryKey("PK_PreventTypes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -29,7 +29,7 @@ namespace Prevent.Web.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Title = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: true),
-                    TypePreventId = table.Column<int>(nullable: false),
+                    PreventTypeId = table.Column<int>(nullable: false),
                     File = table.Column<string>(nullable: true),
                     Date = table.Column<DateTime>(nullable: false)
                 },
@@ -37,17 +37,17 @@ namespace Prevent.Web.Migrations
                 {
                     table.PrimaryKey("PK_Prevents", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Prevents_TypePreventEntity_TypePreventId",
-                        column: x => x.TypePreventId,
-                        principalTable: "TypePreventEntity",
+                        name: "FK_Prevents_PreventTypes_PreventTypeId",
+                        column: x => x.PreventTypeId,
+                        principalTable: "PreventTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Prevents_TypePreventId",
+                name: "IX_Prevents_PreventTypeId",
                 table: "Prevents",
-                column: "TypePreventId");
+                column: "PreventTypeId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -56,7 +56,7 @@ namespace Prevent.Web.Migrations
                 name: "Prevents");
 
             migrationBuilder.DropTable(
-                name: "TypePreventEntity");
+                name: "PreventTypes");
         }
     }
 }

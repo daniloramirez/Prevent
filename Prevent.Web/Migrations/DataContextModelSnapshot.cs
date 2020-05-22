@@ -31,19 +31,19 @@ namespace Prevent.Web.Migrations
 
                     b.Property<string>("File");
 
+                    b.Property<int>("PreventTypeId");
+
                     b.Property<string>("Title")
                         .IsRequired();
 
-                    b.Property<int>("TypePreventId");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("TypePreventId");
+                    b.HasIndex("PreventTypeId");
 
                     b.ToTable("Prevents");
                 });
 
-            modelBuilder.Entity("Prevent.Web.Data.Entities.TypePreventEntity", b =>
+            modelBuilder.Entity("Prevent.Web.Data.Entities.PreventTypeEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -54,14 +54,14 @@ namespace Prevent.Web.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TypePreventEntity");
+                    b.ToTable("PreventTypes");
                 });
 
             modelBuilder.Entity("Prevent.Web.Data.Entities.PreventEntity", b =>
                 {
-                    b.HasOne("Prevent.Web.Data.Entities.TypePreventEntity", "TypePrevent")
+                    b.HasOne("Prevent.Web.Data.Entities.PreventTypeEntity", "PreventType")
                         .WithMany()
-                        .HasForeignKey("TypePreventId")
+                        .HasForeignKey("PreventTypeId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
