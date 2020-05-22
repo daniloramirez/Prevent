@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Prevent.Web.Data;
 using Prevent.Web.Data.Entities;
@@ -40,6 +41,14 @@ namespace Prevent.Web.Controllers
 
         public IActionResult Create()
         {
+            ViewBag.PreventTypes = _context.PreventTypes.ToList().ConvertAll(d =>
+            {
+                return new SelectListItem()
+                {
+                    Text = d.Name.ToString(),
+                    Value = d.Id.ToString(),
+                };
+            });
             return View();
         }
 
@@ -50,6 +59,7 @@ namespace Prevent.Web.Controllers
             if (ModelState.IsValid)
             {
                 preventEntity.Title = preventEntity.Title.ToUpper();
+                preventEntity.PreventType = await _context.PreventTypes.FirstOrDefaultAsync(u => u.Id == preventEntity.PreventTypeId);
                 _context.Add(preventEntity);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -69,6 +79,14 @@ namespace Prevent.Web.Controllers
             {
                 return NotFound();
             }
+            ViewBag.PreventTypes = _context.PreventTypes.ToList().ConvertAll(d =>
+            {
+                return new SelectListItem()
+                {
+                    Text = d.Name.ToString(),
+                    Value = d.Id.ToString(),
+                };
+            });
             return View(preventEntity);
         }
 

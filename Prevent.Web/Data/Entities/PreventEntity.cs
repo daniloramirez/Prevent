@@ -12,7 +12,11 @@ namespace Prevent.Web.Data.Entities
 
         public string Description { get; set; }
 
+        [RegularExpression("^[0-9]*$", ErrorMessage = "The field {0} invalid character.")]
         [Required(ErrorMessage = "The field {0} is mandatory.")]
+        [Display(Name = "Prevent Type")]
+        public int PreventTypeId { get; set; }
+
         public PreventTypeEntity PreventType { get; set; }
 
         public string File { get; set; }
