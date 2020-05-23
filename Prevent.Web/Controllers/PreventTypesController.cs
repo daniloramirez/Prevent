@@ -28,8 +28,8 @@ namespace Prevent.Web.Controllers
                 return NotFound();
             }
 
-            PreventTypeEntity preventTypeEntity = await _context.PreventTypes
-                .FirstOrDefaultAsync(m => m.Id == id);
+            PreventTypeEntity preventTypeEntity = await _context.PreventTypes.FindAsync(id);
+            //    .FirstOrDefaultAsync(m => m.Id == id);
             if (preventTypeEntity == null)
             {
                 return NotFound();
@@ -82,22 +82,8 @@ namespace Prevent.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(preventTypeEntity);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PreventTypeEntityExists(preventTypeEntity.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                _context.Update(preventTypeEntity);
+                await _context.SaveChangesAsync();   
                 return RedirectToAction(nameof(Index));
             }
             return View(preventTypeEntity);
@@ -110,29 +96,16 @@ namespace Prevent.Web.Controllers
                 return NotFound();
             }
 
-            PreventTypeEntity preventTypeEntity = await _context.PreventTypes
-                .FirstOrDefaultAsync(m => m.Id == id);
+            PreventTypeEntity preventTypeEntity = await _context.PreventTypes.FindAsync(id);
+            //    .FirstOrDefaultAsync(m => m.Id == id);
             if (preventTypeEntity == null)
             {
                 return NotFound();
             }
 
-            return View(preventTypeEntity);
-        }
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            PreventTypeEntity preventTypeEntity = await _context.PreventTypes.FindAsync(id);
             _context.PreventTypes.Remove(preventTypeEntity);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool PreventTypeEntityExists(int id)
-        {
-            return _context.PreventTypes.Any(e => e.Id == id);
         }
     }
 }
