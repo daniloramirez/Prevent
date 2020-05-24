@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Prevent.Web;
 using Prevent.Web.Data;
 
-namespace Taxi.Web
+namespace Prevent.Web
 {
     public class Program
     {

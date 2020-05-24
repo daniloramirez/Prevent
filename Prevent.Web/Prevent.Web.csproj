@@ -7,12 +7,18 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200522020601_InitialDB.cs" />
     <Compile Remove="Migrations\20200522020601_InitialDB.Designer.cs" />
+    <Compile Remove="Migrations\20200524221726_AddUserEntities.cs" />
+    <Compile Remove="Migrations\20200524221726_AddUserEntities.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Prevent.Common\Prevent.Common.csproj" />
   </ItemGroup>
 
 </Project>
