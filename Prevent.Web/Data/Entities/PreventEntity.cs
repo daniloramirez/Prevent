@@ -24,5 +24,7 @@ namespace Prevent.Web.Data.Entities
         [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm}", ApplyFormatInEditMode = false)]
         public DateTime Date { get; set; }
+
+        public UserEntity User { get; set; }
     }
 }

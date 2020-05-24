@@ -32,6 +32,7 @@ namespace Prevent.Web.Data
                     Title = "CONSUMO DE ALCOHOL",
                     Description = "Cuanta mayor cantidad de alcohol consumas, mayor riesgo de padecer cáncer de mama tienes.",
                     Date = DateTime.UtcNow,
+                    PreventTypeId = Consejo.Id,
                     PreventType = Consejo
                 });
 
@@ -40,6 +41,7 @@ namespace Prevent.Web.Data
                     Title = "CONTROLAR EL PESO",
                     Description = "La gordura y la obesidad aumentan el riesgo de padecer cáncer de mama y más todavía cuando ocurren a mayor edad, particularmente después de la menopausia.",
                     Date = DateTime.UtcNow,
+                    PreventTypeId = Guia.Id,
                     PreventType = Guia
                 });
                 await _dataContext.SaveChangesAsync();

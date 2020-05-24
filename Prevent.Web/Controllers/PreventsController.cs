@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Prevent.Web.Data;
 using Prevent.Web.Data.Entities;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -60,6 +61,7 @@ namespace Prevent.Web.Controllers
             {
                 preventEntity.Title = preventEntity.Title.ToUpper();
                 preventEntity.PreventType = await _context.PreventTypes.FirstOrDefaultAsync(u => u.Id == preventEntity.PreventTypeId);
+                preventEntity.Date = DateTime.UtcNow;
                 _context.Add(preventEntity);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
