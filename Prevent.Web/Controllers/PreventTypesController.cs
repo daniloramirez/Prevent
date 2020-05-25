@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Prevent.Web.Data;
 using Prevent.Web.Data.Entities;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Prevent.Web.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class PreventTypesController : Controller
     {
         private readonly DataContext _context;
@@ -96,7 +98,7 @@ namespace Prevent.Web.Controllers
                 return NotFound();
             }
 
-            PreventTypeEntity preventTypeEntity = await _context.PreventTypes.FindAsync(id);
+            var preventTypeEntity = await _context.PreventTypes.FindAsync(id);
             //    .FirstOrDefaultAsync(m => m.Id == id);
             if (preventTypeEntity == null)
             {
