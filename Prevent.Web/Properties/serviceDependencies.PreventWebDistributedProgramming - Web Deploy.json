@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/2b693298-f525-4f98-857d-d8aa886cff1c/resourcegroups/ITM/providers/Microsoft.Sql/servers/distributedprogrammingserver/databases/Prevent.Web_db",
+      "type": "mssql.azure",
+      "connectionId": "DefaultConnection",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}
