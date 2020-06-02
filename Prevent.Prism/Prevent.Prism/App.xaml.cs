@@ -3,6 +3,7 @@ using Prevent.Prism.ViewModels;
 using Prevent.Prism.Views;
 using Prism;
 using Prism.Ioc;
+using Syncfusion.Licensing;
 using Xamarin.Essentials.Implementation;
 using Xamarin.Essentials.Interfaces;
 using Xamarin.Forms;
@@ -19,7 +20,7 @@ namespace Prevent.Prism
 
         protected override async void OnInitialized()
         {
-            //SyncfusionLicenseProvider.RegisterLicense("MjQyODIyQDMxMzgyZTMxMmUzMFFKdGZMbEdUc1NBSC9Xd1hub0cvd1RGbmpmN0c1YVc0eE5ZUVFjODZoeVE9");
+            SyncfusionLicenseProvider.RegisterLicense("MjY1NTAwQDMxMzgyZTMxMmUzMGpmdjZUczd2OGlYK2VRUzRGRDNvbHd4dzJtWXd3ekJNenhhYmVuR2YvcUU9");
             InitializeComponent();
 
             await NavigationService.NavigateAsync("/PreventMasterDetailPage/NavigationPage/HomePage");

@@ -11,6 +11,7 @@ namespace Prevent.Prism.ViewModels
     {
         private readonly IApiService _apiService;
         private PreventTypeResponse _prevent;
+        private bool _isRunning;
         private DelegateCommand _checkPreventTypeCommand;
 
         public AdvicePageViewModel(
@@ -19,8 +20,13 @@ namespace Prevent.Prism.ViewModels
         {
             _apiService = apiService;
             Title = "Advices";
+            IsRunning = false;
         }
-
+        public bool IsRunning
+        {
+            get => _isRunning;
+            set => SetProperty(ref _isRunning, value);
+        }
         public PreventTypeResponse PreventType
         {
             get => _prevent;
@@ -42,8 +48,10 @@ namespace Prevent.Prism.ViewModels
                 return;
             }
 
+            IsRunning = true;
             string url = App.Current.Resources["UrlAPI"].ToString();
             Response response = await _apiService.GetPreventAsync(PreventTypeId, url, "api", "/Prevents");
+            IsRunning = false;
             if (!response.IsSuccess)
             {
                 await App.Current.MainPage.DisplayAlert(
