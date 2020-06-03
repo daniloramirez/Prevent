@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Plugin.Connectivity;
 using Prevent.Common.Models;
 using System;
 using System.Net.Http;
@@ -8,6 +9,16 @@ namespace Prevent.Common.Services
 {
     public class ApiService : IApiService
     {
+        public async Task<bool> CheckConnectionAsync(string url)
+        {
+            if (!CrossConnectivity.Current.IsConnected)
+            {
+                return false;
+            }
+
+            return await CrossConnectivity.Current.IsRemoteReachable(url);
+        }
+
         public async Task<Response> GetPreventAsync(string preventType, string urlBase, string servicePrefix, string controller)
         {
             try

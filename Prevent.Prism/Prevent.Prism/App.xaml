@@ -10,6 +10,11 @@
             <!-- Parameters -->
             <x:String x:Key="UrlAPI">https://preventwebdistributedprogramming.azurewebsites.net</x:String>
 
+            <!-- Colors -->
+            <Color x:Key="ColorPrimary">#F205CB</Color>
+            <Color x:Key="ColorFont">#F205CB</Color>
+            <Color x:Key="ColorFontInverse">#FFFFFF</Color>
+
         </ResourceDictionary>
 
     </Application.Resources>

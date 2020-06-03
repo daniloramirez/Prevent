@@ -12,8 +12,9 @@
                      AbsoluteLayout.LayoutFlags="All" 
                      Padding="5">
 
-            <!--<StackLayout Orientation="Horizontal">
-                <Label Text="Id"
+            <StackLayout Orientation="Horizontal"
+                         Margin="10">
+            <!--<Label Text="Id"
                    VerticalOptions="Center"/>
                 <Entry HorizontalOptions="FillAndExpand" 
                    Placeholder="Enter PreventType..." 
@@ -25,12 +26,12 @@
                     HeightRequest="40"
                     Margin="10,0"
                     Text="Check"
-                    TextColor="White"/>
-            </StackLayout>-->
-            <Label FontAttributes="Bold" 
+                    TextColor="White"/>-->
+            </StackLayout>
+            <!--<Label FontAttributes="Bold" 
                FontSize="48"
                HorizontalOptions="Center"
-               Text="{Binding PreventType.Name, StringFormat='{0:N0}'}"/>
+               Text="{Binding PreventType.Name, StringFormat='{0:N0}'}"/>-->
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -41,12 +42,12 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="48" />
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0"
+                <!--<Label Grid.Column="0"
                    FontAttributes="Bold"
                    Text="Title"/>
                 <Label Grid.Column="1"
                    FontAttributes="Bold"
-                   Text="Date"/>
+                   Text="Date"/>-->
             </Grid>
 
             <CollectionView ItemsSource="{Binding PreventType.Prevents}">
@@ -55,20 +56,34 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid>
+                        <Grid RowSpacing="1" ColumnSpacing="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="8*"/>
+                                <RowDefinition Height="22"/>
+                                <RowDefinition Height="22"/>
+                                <RowDefinition Height="70"/>
+                            </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width=".8*" />
-                                <ColumnDefinition Width=".5*" />
                                 <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="40" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0"
-                               Text="{Binding Title}"
-                               VerticalOptions="Center"/>
-                            <Label Grid.Column="1"
-                               Text="{Binding Date, StringFormat='{0:yyyy/MM/dd HH:mm}'}"
-                               VerticalOptions="Center"/>
-                            <Image Grid.Column="2" 
+                            <Label Grid.Row="0"
+                                   Grid.Column="0"
+                                   Grid.ColumnSpan="2"
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"
+                                   MaxLines="2"
+                                   LineBreakMode="TailTruncation"
+                                   Text="{Binding Title}"/>
+                            <Label Grid.Row="1"
+                                   Grid.Column="0"
+                                   Grid.ColumnSpan="2"
+                                   Text="{Binding Date, StringFormat='{0:yyyy/MM/dd HH:mm}'}"/>
+                            <Image Grid.Column="2"
+                                   Grid.Row="1"
+                                   Grid.RowSpan="2" 
                                Source="ic_more_vert"/>
                         </Grid>
                     </DataTemplate>
