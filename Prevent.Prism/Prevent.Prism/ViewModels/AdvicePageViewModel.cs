@@ -10,7 +10,7 @@ namespace Prevent.Prism.ViewModels
         private readonly IApiService _apiService;
         private PreventTypeResponse _prevent;
         private bool _isRunning;
-        private DelegateCommand _checkPreventTypeCommand;
+        //private DelegateCommand _checkPreventTypeCommand;
         public string PreventTypeId { get; set; }
 
         public AdvicePageViewModel(
@@ -33,7 +33,7 @@ namespace Prevent.Prism.ViewModels
             set => SetProperty(ref _prevent, value);
         }        
 
-        public DelegateCommand CheckPreventTypeCommand => _checkPreventTypeCommand ?? (_checkPreventTypeCommand = new DelegateCommand(CheckPreventAsync));
+        //public DelegateCommand CheckPreventTypeCommand => _checkPreventTypeCommand ?? (_checkPreventTypeCommand = new DelegateCommand(CheckPreventAsync));
 
         private async void CheckPreventAsync()
         {
