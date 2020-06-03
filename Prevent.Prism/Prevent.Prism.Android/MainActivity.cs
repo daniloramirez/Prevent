@@ -17,13 +17,13 @@ namespace Prevent.Prism.Droid
 
             base.OnCreate(savedInstanceState);
 
-            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            //Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             new SfBusyIndicatorRenderer();
             LoadApplication(new App(new AndroidInitializer()));
         }
 
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Android.Content.PM.Permission[] grantResults)
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 

@@ -20,7 +20,7 @@ namespace Prevent.Prism
 
         protected override async void OnInitialized()
         {
-            SyncfusionLicenseProvider.RegisterLicense("MjY1NTAwQDMxMzgyZTMxMmUzMGpmdjZUczd2OGlYK2VRUzRGRDNvbHd4dzJtWXd3ekJNenhhYmVuR2YvcUU9");
+            SyncfusionLicenseProvider.RegisterLicense("MjY2NjQxQDMxMzgyZTMxMmUzMElTUTNwZCtOaVZVMWU2ank0cDhscVVxSlNvNW1TNG9xS2c0UFZRUlE2SEU9");
             InitializeComponent();
 
             await NavigationService.NavigateAsync("/PreventMasterDetailPage/NavigationPage/HomePage");

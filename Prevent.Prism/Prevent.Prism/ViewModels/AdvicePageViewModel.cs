@@ -1,9 +1,7 @@
-﻿using Prism.Commands;
-using Prism.Navigation;
-using System.Text.RegularExpressions;
-using Prevent.Common.Models;
+﻿using Prevent.Common.Models;
 using Prevent.Common.Services;
-using Prevent.Prism.ViewModels;
+using Prism.Commands;
+using Prism.Navigation;
 
 namespace Prevent.Prism.ViewModels
 {
@@ -13,6 +11,7 @@ namespace Prevent.Prism.ViewModels
         private PreventTypeResponse _prevent;
         private bool _isRunning;
         private DelegateCommand _checkPreventTypeCommand;
+        public string PreventTypeId { get; set; }
 
         public AdvicePageViewModel(
             INavigationService navigationService,
@@ -20,7 +19,8 @@ namespace Prevent.Prism.ViewModels
         {
             _apiService = apiService;
             Title = "Advices";
-            IsRunning = false;
+            PreventTypeId = "1";
+            CheckPreventAsync();
         }
         public bool IsRunning
         {
@@ -31,9 +31,7 @@ namespace Prevent.Prism.ViewModels
         {
             get => _prevent;
             set => SetProperty(ref _prevent, value);
-        }
-
-        public string PreventTypeId { get; set; }
+        }        
 
         public DelegateCommand CheckPreventTypeCommand => _checkPreventTypeCommand ?? (_checkPreventTypeCommand = new DelegateCommand(CheckPreventAsync));
 
