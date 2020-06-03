@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Prevent.Prism.Views.ItemDetailPage"
+             Title="{Binding Prevent.Title}">
+
+    <StackLayout Padding="5">
+        <StackLayout Margin="15, 30, 15, 5">
+        <Image HeightRequest="200"
+                       Source="{Binding Prevent.File}"/>
+        </StackLayout>
+        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
+                     AbsoluteLayout.LayoutFlags="All" 
+                     Padding="15">
+            <Label FontAttributes="Bold" 
+                        FontSize="Large"
+                        Margin="8"
+                        Text="{Binding Prevent.Description}"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

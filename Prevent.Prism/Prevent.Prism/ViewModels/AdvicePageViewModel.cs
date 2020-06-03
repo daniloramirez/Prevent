@@ -2,14 +2,18 @@
 using Prevent.Common.Services;
 using Prism.Commands;
 using Prism.Navigation;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Prevent.Prism.ViewModels
 {
     public class AdvicePageViewModel : ViewModelBase
     {
+        private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
         private PreventTypeResponse _prevent;
         private bool _isRunning;
+        private List<PreventItemViewModel> _details;
         //private DelegateCommand _checkPreventTypeCommand;
         public string PreventTypeId { get; set; }
 
@@ -17,16 +21,24 @@ namespace Prevent.Prism.ViewModels
             INavigationService navigationService,
             IApiService apiService) : base(navigationService)
         {
+            _navigationService = navigationService;
             _apiService = apiService;
             Title = "Advices";
             PreventTypeId = "1";
             CheckPreventAsync();
         }
+        public List<PreventItemViewModel> Details
+        {
+            get => _details;
+            set => SetProperty(ref _details, value);
+        }
+
         public bool IsRunning
         {
             get => _isRunning;
             set => SetProperty(ref _isRunning, value);
         }
+
         public PreventTypeResponse PreventType
         {
             get => _prevent;
@@ -68,6 +80,15 @@ namespace Prevent.Prism.ViewModels
             }
 
             PreventType = (PreventTypeResponse)response.Result;
+            Details = PreventType.Prevents.Select(t => new PreventItemViewModel(_navigationService)
+            {
+                Id = t.Id,
+                Title = t.Title,
+                Description = t.Description,
+                Date = t.Date,
+                File = t.File,
+                User = t.User
+            }).ToList();
         }
     }
 }

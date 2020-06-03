@@ -50,13 +50,16 @@
                    Text="Date"/>-->
             </Grid>
 
-            <CollectionView ItemsSource="{Binding PreventType.Prevents}">
+            <CollectionView ItemsSource="{Binding Details}">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical"/>
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid RowSpacing="1" ColumnSpacing="1">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectItemCommand}"/>
+                            </Grid.GestureRecognizers>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="8*"/>
                                 <RowDefinition Height="22"/>

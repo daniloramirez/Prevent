@@ -38,6 +38,7 @@ namespace Prevent.Prism
             containerRegistry.RegisterForNavigation<ModifyUserPage, ModifyUserPageViewModel>();
             containerRegistry.RegisterForNavigation<BackgroundPage, BackgroundPageViewModel>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
+            containerRegistry.RegisterForNavigation<ItemDetailPage, ItemDetailPageViewModel>();
         }
     }
 }
