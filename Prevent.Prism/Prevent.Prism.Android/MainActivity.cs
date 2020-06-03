@@ -7,18 +7,23 @@ using Syncfusion.SfBusyIndicator.XForms.Droid;
 
 namespace Prevent.Prism.Droid
 {
-    [Activity(Label = "Prevent.Prism", Icon = "@mipmap/ic_launcher", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(
+        Label = "Prevent", 
+        Icon = "@mipmap/ic_launcher", 
+        Theme = "@style/MainTheme", 
+        MainLauncher = false, 
+        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle bundle)
         {
             //TabLayoutResource = Resource.Layout.Tabbar;
             //ToolbarResource = Resource.Layout.Toolbar;
 
-            base.OnCreate(savedInstanceState);
+            base.OnCreate(bundle);
 
             //Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            global::Xamarin.Forms.Forms.Init(this, bundle);
             new SfBusyIndicatorRenderer();
             LoadApplication(new App(new AndroidInitializer()));
         }
