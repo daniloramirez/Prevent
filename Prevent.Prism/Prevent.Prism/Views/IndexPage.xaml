@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="Prevent.Prism.Views.IndexPage">
 
     <ContentPage>
@@ -13,11 +14,11 @@
                 <Label FontAttributes="Bold" 
                            FontSize="40"
                            Text="Advices"
-                           Margin="10,70,10,60"
+                           Margin="10,40,10,40"
                            HorizontalOptions="CenterAndExpand"/>
-                <Image HeightRequest="270" IsAnimationPlaying="True" Source="advice.gif" />
+                <ff:CachedImage HeightRequest="270" FadeAnimationEnabled="True" DownsampleToViewSize="True" Source="advice.gif" CacheDuration="30" RetryCount="5" RetryDelay="450"></ff:CachedImage> 
                 <Label FontSize="Large"
-                       Margin="40"
+                       Margin="30"
                        HorizontalTextAlignment="Center"
                        Text="Here you will find the best tips to prevent breast cancer."/>
             </StackLayout>
@@ -27,6 +28,36 @@
         <StackLayout Orientation="Horizontal">
             <BoxView BackgroundColor="#E678C0" />
             <BoxView BackgroundColor="#86ED98" />
+            <StackLayout Orientation="Vertical">
+                <Label FontAttributes="Bold" 
+                           FontSize="40"
+                           Text="Guides"
+                           Margin="10,40,10,40"
+                           HorizontalOptions="CenterAndExpand"/>
+                <ff:CachedImage HeightRequest="270" FadeAnimationEnabled="True" DownsampleToViewSize="True" Source="guide.gif" CacheDuration="30" RetryCount="5" RetryDelay="450"></ff:CachedImage>
+                <Label FontSize="Large"
+                       Margin="10"
+                       HorizontalTextAlignment="Center"
+                       Text="Breast cancer is the type of cancer that causes the highest mortality among women, so we have a care guide."/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage>
+    <ContentPage>
+        <StackLayout Orientation="Horizontal">
+            <BoxView BackgroundColor="#E678C0" />
+            <BoxView BackgroundColor="#86ED98" />
+            <StackLayout Orientation="Vertical">
+                <Label FontAttributes="Bold" 
+                           FontSize="40"
+                           Text="Background"
+                           Margin="10,40,10,40"
+                           HorizontalOptions="CenterAndExpand"/>
+                <ff:CachedImage HeightRequest="270" FadeAnimationEnabled="True" DownsampleToViewSize="True" Source="background.gif" CacheDuration="30" RetryCount="5" RetryDelay="450"></ff:CachedImage>
+                <Label FontSize="Large"
+                       Margin="10"
+                       HorizontalTextAlignment="Center"
+                       Text="Personal history of breast cancer or benign (non-cancerous) breast disease."/>
+            </StackLayout>
         </StackLayout>
     </ContentPage>
 </CarouselPage>

@@ -41,12 +41,12 @@ namespace Prevent.Prism.ViewModels
                     PageName = "GuidePage",
                     Title = "Guides"
                 },
-                new Menu
+                /*new Menu
                 {
                     Icon = "ic_account_circle",
                     PageName = "ModifyUserPage",
                     Title = "Modify User"
-                },
+                },*/
                 new Menu
                 {
                     Icon = "ic_list",
