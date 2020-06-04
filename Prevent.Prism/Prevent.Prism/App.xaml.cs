@@ -23,7 +23,7 @@ namespace Prevent.Prism
             SyncfusionLicenseProvider.RegisterLicense("MjY2NjQxQDMxMzgyZTMxMmUzMElTUTNwZCtOaVZVMWU2ank0cDhscVVxSlNvNW1TNG9xS2c0UFZRUlE2SEU9");
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("/PreventMasterDetailPage/NavigationPage/HomePage");
+            await NavigationService.NavigateAsync("/PreventMasterDetailPage/NavigationPage/IndexPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -39,6 +39,7 @@ namespace Prevent.Prism
             containerRegistry.RegisterForNavigation<BackgroundPage, BackgroundPageViewModel>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
             containerRegistry.RegisterForNavigation<ItemDetailPage, ItemDetailPageViewModel>();
+            containerRegistry.RegisterForNavigation<IndexPage, IndexPageViewModel>();
         }
     }
 }

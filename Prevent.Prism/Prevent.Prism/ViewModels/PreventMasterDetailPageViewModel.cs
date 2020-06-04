@@ -26,7 +26,7 @@ namespace Prevent.Prism.ViewModels
                 new Menu
                 {
                     Icon = "ic_accessibility",
-                    PageName = "HomePage",
+                    PageName = "IndexPage",
                     Title = "Home"
                 },
                 new Menu

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Prevent.Prism.Views.IndexPage">
+
+    <ContentPage>
+        <StackLayout Orientation="Horizontal">
+            <BoxView BackgroundColor="#E678C0" />
+            <BoxView BackgroundColor="#86B7ED" />
+            <StackLayout Orientation="Vertical">
+                <Label FontAttributes="Bold" 
+                           FontSize="40"
+                           Text="Advices"
+                           Margin="10,70,10,60"
+                           HorizontalOptions="CenterAndExpand"/>
+                <Image HeightRequest="210" Source="advice" />
+                <Label FontSize="Large"
+                       Margin="40"
+                       HorizontalTextAlignment="Center"
+                       Text="Here you will find the best tips to prevent breast cancer."/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage>
+    <ContentPage>
+        <StackLayout Orientation="Horizontal">
+            <BoxView BackgroundColor="#E678C0" />
+            <BoxView BackgroundColor="#86ED98" />
+        </StackLayout>
+    </ContentPage>
+</CarouselPage>
