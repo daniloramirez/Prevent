@@ -51,7 +51,7 @@ namespace Prevent.Prism.ViewModels
                 {
                     Icon = "ic_list",
                     PageName = "BackgroundPage",
-                    Title = "Your Background"
+                    Title = "Backgrounds"
                 },
                 new Menu
                 {
