@@ -45,7 +45,7 @@
     <ContentPage>
         <StackLayout Orientation="Horizontal">
             <BoxView BackgroundColor="#E678C0" />
-            <BoxView BackgroundColor="#86ED98" />
+            <BoxView BackgroundColor="#FFFB00" />
             <StackLayout Orientation="Vertical">
                 <Label FontAttributes="Bold" 
                            FontSize="40"

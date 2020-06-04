@@ -1,6 +1,5 @@
 ﻿using Prevent.Common.Models;
 using Prevent.Common.Services;
-using Prism.Commands;
 using Prism.Navigation;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +13,6 @@ namespace Prevent.Prism.ViewModels
         private PreventTypeResponse _prevent;
         private bool _isRunning;
         private List<PreventItemViewModel> _details;
-        //private DelegateCommand _checkPreventTypeCommand;
         public string PreventTypeId { get; set; }
 
         public AdvicePageViewModel(
@@ -43,24 +41,14 @@ namespace Prevent.Prism.ViewModels
         {
             get => _prevent;
             set => SetProperty(ref _prevent, value);
-        }        
-
-        //public DelegateCommand CheckPreventTypeCommand => _checkPreventTypeCommand ?? (_checkPreventTypeCommand = new DelegateCommand(CheckPreventAsync));
+        }
 
         private async void CheckPreventAsync()
         {
-            if (string.IsNullOrEmpty(PreventTypeId))
-            {
-                await App.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "You must enter a id.",
-                    "Accept");
-                return;
-            }
 
             IsRunning = true;
             string url = App.Current.Resources["UrlAPI"].ToString();
-            var connection = await _apiService.CheckConnectionAsync(url);
+            bool connection = await _apiService.CheckConnectionAsync(url);
             if (!connection)
             {
                 IsRunning = false;
