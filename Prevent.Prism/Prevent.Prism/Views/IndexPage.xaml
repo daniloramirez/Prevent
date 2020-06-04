@@ -15,7 +15,7 @@
                            Text="Advices"
                            Margin="10,70,10,60"
                            HorizontalOptions="CenterAndExpand"/>
-                <Image HeightRequest="210" Source="advice" />
+                <Image HeightRequest="270" IsAnimationPlaying="True" Source="advice.gif" />
                 <Label FontSize="Large"
                        Margin="40"
                        HorizontalTextAlignment="Center"
