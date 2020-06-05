@@ -8,69 +8,72 @@
              Title="{Binding Title}">
 
     <AbsoluteLayout>
-        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
+        <StackLayout Orientation="Horizontal">
+            <BoxView BackgroundColor="#E678C0" />
+            <BoxView BackgroundColor="#86B7ED" />
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
                      AbsoluteLayout.LayoutFlags="All" 
                      Padding="5">
+            
+                <StackLayout Orientation="Horizontal"
+                             Margin="10">
+                </StackLayout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".8*" />
+                        <ColumnDefinition Width=".5*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="48" />
+                    </Grid.ColumnDefinitions>
+                </Grid>
 
-            <StackLayout Orientation="Horizontal"
-                         Margin="10">
+                <CollectionView ItemsSource="{Binding Details}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid RowSpacing="1" ColumnSpacing="1">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SelectItemCommand}"/>
+                                </Grid.GestureRecognizers>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="8*"/>
+                                    <RowDefinition Height="22"/>
+                                    <RowDefinition Height="22"/>
+                                    <RowDefinition Height="20"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10" />
+                                    <ColumnDefinition Width="250" />
+                                    <ColumnDefinition Width="40" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0"
+                                       Grid.Column="0"
+                                       Grid.ColumnSpan="2"
+                                       FontAttributes="Bold"
+                                       FontSize="Medium"
+                                       MaxLines="2"
+                                       LineBreakMode="TailTruncation"
+                                       Text="{Binding Title}"/>
+                                <Label Grid.Row="1"
+                                       Grid.Column="0"
+                                       Grid.ColumnSpan="2"
+                                       Text="{Binding Date, StringFormat='{0:yyyy/MM/dd HH:mm}'}"/>
+                                <Image Grid.Column="2"
+                                       Grid.Row="1"
+                                       Grid.RowSpan="2" 
+                                   Source="ic_more_vert"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
             </StackLayout>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width=".8*" />
-                    <ColumnDefinition Width=".5*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="48" />
-                </Grid.ColumnDefinitions>
-            </Grid>
-
-            <CollectionView ItemsSource="{Binding Details}">
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Vertical"/>
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid RowSpacing="1" ColumnSpacing="1">
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding SelectItemCommand}"/>
-                            </Grid.GestureRecognizers>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="8*"/>
-                                <RowDefinition Height="22"/>
-                                <RowDefinition Height="22"/>
-                                <RowDefinition Height="70"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="40" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Label Grid.Row="0"
-                                   Grid.Column="0"
-                                   Grid.ColumnSpan="2"
-                                   FontAttributes="Bold"
-                                   FontSize="Medium"
-                                   MaxLines="2"
-                                   LineBreakMode="TailTruncation"
-                                   Text="{Binding Title}"/>
-                            <Label Grid.Row="1"
-                                   Grid.Column="0"
-                                   Grid.ColumnSpan="2"
-                                   Text="{Binding Date, StringFormat='{0:yyyy/MM/dd HH:mm}'}"/>
-                            <Image Grid.Column="2"
-                                   Grid.Row="1"
-                                   Grid.RowSpan="2" 
-                               Source="ic_more_vert"/>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
         </StackLayout>
-
         <busyindicator:SfBusyIndicator AnimationType="ECG" 
                                        AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
                 	                   AbsoluteLayout.LayoutFlags="All"
