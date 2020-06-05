@@ -2,8 +2,69 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Prevent.Prism.Views.LoginPage"
              Title="{Binding Title}">
-  
+
+    <AbsoluteLayout>
+        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
+                     AbsoluteLayout.LayoutFlags="All" 
+                     Padding="5">
+            <Image HeightRequest="200"
+                   Margin="0,40,0,0"
+                   Source="prevent"/>
+            <Grid Margin="20" 
+                  VerticalOptions="CenterAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" 
+                       Grid.Row="0"
+                       HorizontalTextAlignment="End"
+                       Text="Email"
+                       VerticalOptions="Center"/>
+                <Entry Grid.Column="1"
+                       Grid.Row="0"
+                       Keyboard="Email"
+                       Placeholder="{Binding EmailPlaceHolder}"
+                       />
+                <Label Grid.Column="0" 
+                       Grid.Row="1"
+                       HorizontalTextAlignment="End"
+                       Text="Password"
+                       VerticalOptions="Center"/>
+                <Entry Grid.Column="1"
+                       Grid.Row="1"
+                       IsPassword="True"
+                       Placeholder="{Binding PasswordPlaceHolder}"/>
+            </Grid>
+            <StackLayout>
+                <Button IsEnabled="{Binding IsEnabled}"
+                        Text="Login"/>
+                <Button IsEnabled="{Binding IsEnabled}"
+                        Text="Register"
+                        BackgroundColor="HotPink"/>
+                <Button BackgroundColor="#4768AD" 
+                        HeightRequest="45"
+                        IsEnabled="{Binding IsEnabled}"
+                        ImageSource="ic_fb"
+                        Text="Login With Facebook"
+                        TextColor="#FFFFFF"/>
+
+            </StackLayout>
+        </StackLayout>
+        <busyindicator:SfBusyIndicator AnimationType="ECG" 
+                                       AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                	                   AbsoluteLayout.LayoutFlags="All"
+                	                   BackgroundColor="Transparent"
+                	                   HorizontalOptions="Center"
+                	                   TextColor="HotPink"
+                	                   IsBusy="{Binding IsRunning}"
+                                       Title="Loading..."
+                	                   VerticalOptions="Center"
+                	                   ViewBoxWidth="100"
+                 	                   ViewBoxHeight="100" />
+    </AbsoluteLayout>
 </ContentPage>
