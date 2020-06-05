@@ -29,8 +29,8 @@ namespace Prevent.Web.Data
         {
             await _dataContext.Database.EnsureCreatedAsync();
             await CheckRolesAsync();
-            var Consejo = CheckPreventType("Consejo");
-            var Guia = CheckPreventType("Guía de información");
+            var Consejo = CheckPreventType("Advice");
+            var Guia = CheckPreventType("Guide");
             var Admin = await CheckUserAsync("1010", "Danilo", "Ramirez", "daniloramirez0818@gmail.com", "350 634 2747", "Calle Luna Calle Sol", UserType.Admin);
             await CheckUserAsync("2020", "Danilo", "Ramirez", "daniloramirez0818@hotmail.com", "350 634 2747", "Calle Luna Calle Sol", UserType.User);
             await CheckUserAsync("3030", "Danilo", "Ramirez", "daniloramirez187435@correo.itm.edu.co", "350 634 2747", "Calle Luna Calle Sol", UserType.User);
@@ -80,21 +80,23 @@ namespace Prevent.Web.Data
             {
                 _dataContext.Prevents.Add(new PreventEntity
                 {
-                    Title = "CONSUMO DE ALCOHOL",
-                    Description = "Cuanta mayor cantidad de alcohol consumas, mayor riesgo de padecer cáncer de mama tienes.",
+                    Title = "ALCOHOL CONSUMPTION",
+                    Description = "The greater amount of alcohol you consume, the higher risk you have of breast cancer.",
                     Date = DateTime.UtcNow,
                     PreventTypeId = Consejo.Id,
                     PreventType = Consejo,
+                    File = "~/images/prevents/11c52af4-1311-47bb-98b3-91a8334f3590.jpg",
                     User = Admin
                 });
 
                 _dataContext.Prevents.Add(new PreventEntity
                 {
-                    Title = "CONTROLAR EL PESO",
-                    Description = "La gordura y la obesidad aumentan el riesgo de padecer cáncer de mama y más todavía cuando ocurren a mayor edad, particularmente después de la menopausia.",
+                    Title = "CONTROL WEIGHT",
+                    Description = "Fat and obesity increase the risk of breast cancer and even more so when they occur at an older age, particularly after menopause.",
                     Date = DateTime.UtcNow,
                     PreventTypeId = Guia.Id,
                     PreventType = Guia,
+                    File = "~/images/prevents/46da3641-08ae-457d-9c2b-ca7d2cd61be7.jpg",
                     User = Admin
                 });
                 await _dataContext.SaveChangesAsync();

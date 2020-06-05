@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Prevent.Web.Data;
 using Prevent.Web.Data.Entities;
+using Prevent.Web.Helpers;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,10 +16,14 @@ namespace Prevent.Web.Controllers
     public class PreventsController : Controller
     {
         private readonly DataContext _context;
+        private readonly IImageHelper _imageHelper;
 
-        public PreventsController(DataContext context)
+        public PreventsController(
+            DataContext context,
+            IImageHelper imageHelper)
         {
             _context = context;
+            _imageHelper = imageHelper;
         }
 
         public async Task<IActionResult> Index()
@@ -63,6 +69,10 @@ namespace Prevent.Web.Controllers
             {
                 preventEntity.Title = preventEntity.Title.ToUpper();
                 preventEntity.PreventType = await _context.PreventTypes.FirstOrDefaultAsync(u => u.Id == preventEntity.PreventTypeId);
+                if (HttpContext.Request.Form.Files.Count > 0)
+                {
+                    preventEntity.File = await _imageHelper.UploadImageAsync(HttpContext.Request.Form.Files[0], "prevents");
+                }
                 preventEntity.Date = DateTime.UtcNow;
                 _context.Add(preventEntity);
                 await _context.SaveChangesAsync();

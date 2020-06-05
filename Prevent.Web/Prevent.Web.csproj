@@ -10,6 +10,8 @@
     <Compile Remove="Migrations\20200522020601_InitialDB.Designer.cs" />
     <Compile Remove="Migrations\20200524221726_AddUserEntities.cs" />
     <Compile Remove="Migrations\20200524221726_AddUserEntities.Designer.cs" />
+    <Compile Remove="Migrations\20200605025958_AttributePictureFile.cs" />
+    <Compile Remove="Migrations\20200605025958_AttributePictureFile.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +22,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Prevent.Common\Prevent.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\prevents\" />
   </ItemGroup>
 
 </Project>
