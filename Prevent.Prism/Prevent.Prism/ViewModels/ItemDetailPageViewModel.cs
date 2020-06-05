@@ -6,6 +6,7 @@ namespace Prevent.Prism.ViewModels
     public class ItemDetailPageViewModel : ViewModelBase
     {
         private PreventResponse _prevent;
+
         public ItemDetailPageViewModel(INavigationService navigationService) : base(navigationService)
         {
         }
@@ -22,10 +23,6 @@ namespace Prevent.Prism.ViewModels
             if (parameters.ContainsKey("prevent"))
             {
                 Prevent = parameters.GetValue<PreventResponse>("prevent");
-                if(Prevent.Id == 1)
-                {
-                    Prevent.File = "alcohol";
-                }
             }
         }
     }

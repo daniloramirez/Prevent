@@ -73,7 +73,7 @@ namespace Prevent.Prism.ViewModels
                 Title = t.Title,
                 Description = t.Description,
                 Date = t.Date,
-                File = t.File,
+                File = $"{url}{t.File.Replace("~", "")}",
                 User = t.User
             }).ToList();
         }

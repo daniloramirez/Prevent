@@ -11,7 +11,7 @@
         <StackLayout Margin="15, 30, 15, 5">
         <!--<Image HeightRequest="200"
                        Source="{Binding Prevent.File}"/>-->
-            <ff:CachedImage LoadingPlaceholder="Logo" Source="alcohol" HeightRequest="200" CacheDuration="30" RetryCount="5" RetryDelay="450" DownsampleToViewSize="true"></ff:CachedImage>  
+            <ff:CachedImage LoadingPlaceholder="Logo" Source="{Binding Prevent.File}" HeightRequest="200" CacheDuration="30" RetryCount="5" RetryDelay="450" DownsampleToViewSize="true"></ff:CachedImage>  
         </StackLayout>
         <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
                      AbsoluteLayout.LayoutFlags="All" 
